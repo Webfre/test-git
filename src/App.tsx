@@ -6,13 +6,15 @@ import Item from "./components/Item";
 import { useState } from "react";
 
 function App() {
-  const [color, setColor] = useState("red");
+  const [color, setColor] = useState<string>("red");
 
-  const changeColorTheme = () => {};
+  const changeColorTheme = (color: string) => {
+    console.log(`Hello ${color}`);
+  };
 
   return (
-    <div className="App">
-      <ButtonColor />
+    <div className="App" style={{ background: color }}>
+      <ButtonColor fn={changeColorTheme} color={color} setColor={setColor} />
       <Input />
       <Item />
     </div>
